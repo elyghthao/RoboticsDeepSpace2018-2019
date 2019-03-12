@@ -50,15 +50,15 @@ public class Drive extends Command {
     protected void execute() {
         left = Robot.oi.getleftJoystick().getY();
         right = Robot.oi.getrightJoystick().getY();
-        Robot.acquisition.setConfigMotorSpeed(Robot.oi.operatorJoystick.getRawAxis(1) * 0.5);
+        Robot.acquisition.setConfigMotorSpeed(Robot.oi.operatorJoystick.getRawAxis(3) * 0.5);
 
         // Robot.climbing.setLeftBackMoveMotor(-left*0.8);
         // Robot.climbing.setRightMoveMotor(-right*0.8);
-        // Robot.climbing.setMiddleMoveMotor(-right);
+        // Robot.climbing.setMiddleMoveMotor(-right);j                                 
 
         Robot.chassis.setRightMotor1Speed(right);
         Robot.chassis.setRightMotor2Speed(right);
-        Robot.chassis.setLeftMotor1Speed(-left);
+        Robot.chassis.setLeftMotor1Speed(-left);  
         Robot.chassis.setLeftMotor2Speed(-left);
 
         
@@ -118,6 +118,5 @@ public class Drive extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-        end();
     }
 }
