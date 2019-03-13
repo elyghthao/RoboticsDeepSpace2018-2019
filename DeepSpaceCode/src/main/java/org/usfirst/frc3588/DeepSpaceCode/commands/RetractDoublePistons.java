@@ -38,8 +38,8 @@ public class RetractDoublePistons extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-       // setTimeout(1.0);
-        //obot.climbing.retractDoublePistons();
+        setTimeout(1.0);
+        Robot.climbing.retractDoublePistons();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -56,13 +56,13 @@ public class RetractDoublePistons extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        //Robot.climbing.turnOffDoublePistonSolenoid();
+        Robot.climbing.turnOffDoublePistonSolenoid();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-        //end();
+        end();
     }
 }
