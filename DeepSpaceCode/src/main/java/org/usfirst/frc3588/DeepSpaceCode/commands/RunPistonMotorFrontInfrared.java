@@ -49,7 +49,7 @@ public class RunPistonMotorFrontInfrared extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if(Robot.climbing.getFrontInfrared() < 100){
+        if(Robot.climbing.getFrontInfrared() > 2.0){
             return true;
         }else{
         return false;
@@ -60,7 +60,7 @@ public class RunPistonMotorFrontInfrared extends Command {
     @Override
     protected void end() {
         Robot.climbing.powerPistonMotor(0.0);
-        Robot.chassis.driveStraight(0.3);
+        Robot.chassis.driveStraight(0.0);
     }
 
     // Called when another command which requires one or more of the same

@@ -51,5 +51,6 @@ public class AutonomousClimbing extends CommandGroup {
         addSequential(new RetractDoublePistons());
         addSequential(new RunPistonMotorBackInfrared());
         addSequential(new RetractSinglePiston());
+        addSequential(new DriveAutonomous());
     } 
 }

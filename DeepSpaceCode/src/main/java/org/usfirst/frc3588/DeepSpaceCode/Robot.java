@@ -74,8 +74,8 @@ public class Robot extends TimedRobot {
         cam0 = CameraServer.getInstance().startAutomaticCapture();
         cam0.setResolution(IMG_WIDTH, IMG_HEIGHT);
         
-    //     CvSink cvSink = CameraServer.getInstance().getVideo();
-    //     CvSource outputStream = CameraServer.getInstance().putVideo("Blur", IMG_WIDTH, IMG_HEIGHT);
+    // CvSink cvSink = CameraServer.getInstance().getVideo();
+    // CvSource outputStream = CameraServer.getInstance().putVideo("Blur", IMG_WIDTH, IMG_HEIGHT);
     //     Mat source = new Mat();
     //     Mat output = new Mat();
     //     while(!Thread.interrupted()) {
