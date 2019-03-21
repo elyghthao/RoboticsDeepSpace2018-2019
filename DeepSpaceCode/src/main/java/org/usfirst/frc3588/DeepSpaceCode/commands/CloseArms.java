@@ -39,7 +39,7 @@ public class CloseArms extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.acquisition.setArmMotorSpeed(-Robot.acquisition.MOVE);
+        // Robot.acquisition.setArmMotorSpeed(-Robot.acquisition.MOVE);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -57,7 +57,7 @@ public class CloseArms extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.acquisition.setArmMotorSpeed(Robot.acquisition.STOP);
+        // Robot.acquisition.setArmMotorSpeed(Robot.acquisition.STOP);
         
     }
 
@@ -65,6 +65,6 @@ public class CloseArms extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-        end();
+        // end();
     }
 }

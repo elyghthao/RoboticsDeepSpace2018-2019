@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc3588.DeepSpaceCode.commands;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3588.DeepSpaceCode.Robot;
 
@@ -37,16 +38,19 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        /*
         Robot.lift.moveLift(0.4);
         setTimeout(1.5);
         while(!isTimedOut());
         Robot.lift.moveLift(0.0);
 
-        Robot.acquisition.setArmMotorSpeed(0.3);
-        setTimeout(0.3);
-        while(!isTimedOut());
-        Robot.lift.moveLift(0.0);
+        // Robot.acquisition.setArmMotorSpeed(0.3);
+        // setTimeout(0.3);
+        // while(!isTimedOut());
+        // Robot.lift.moveLift(0.0);
 
+        Robot.acquisition.openCloseMethod(Value.kForward);
+        
         Robot.lift.moveLift(0.4);
         setTimeout(1.0);
         while(!isTimedOut());
@@ -65,6 +69,7 @@ public class AutonomousCommand extends Command {
         Robot.lift.moveLift(-1.0);
         while(Robot.lift.hatchIsNotInterrupted());
         Robot.lift.moveLift(0.0);
+        */
     }
 
     // Called repeatedly when this Command is scheduled to run
