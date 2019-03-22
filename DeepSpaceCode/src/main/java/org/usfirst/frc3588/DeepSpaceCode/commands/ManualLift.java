@@ -36,6 +36,7 @@ public class ManualLift extends Command {
     }
 
     // Called just before this Command runs the first time
+
     @Override
     protected void initialize() {
     }
@@ -43,13 +44,36 @@ public class ManualLift extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if(Robot.oi.operatorJoystick.getRawButton(1)){
-            Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(3));
-        }else if(!Robot.lift.isInterrupted()){//breaked
-            Robot.lift.moveLift(0.0);
-        }else if(Robot.lift.isInterrupted()){//not breaked
-            Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(3));
-        }
+        // if(Robot.oi.operatorJoystick.getRawButton(1)){
+        //     Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+        // }else if(!Robot.lift.isInterrupted()){//breaked
+        //     Robot.lift.moveLift(0.0);
+        // }else if(Robot.lift.isInterrupted()){//not breaked
+        //     Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+        // }
+        
+        // if(Robot.oi.operatorJoystick.getRawButton(1) && !Robot.lift.hatchIsNotInterrupted()){
+        //     Robot.lift.moveLift(0.0);
+        // }else{
+        //     Robot.lift.moveLift(Robot.oi.operatorJoystick.getRawAxis(1));
+        // }
+        
+        
+        Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
+        while(Robot.oi.operatorJoystick.getRawButton(1)){
+            if(Robot.lift.hatchIsNotInterrupted()){ // false
+                Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+            }else if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
+                Robot.lift.moveLift(0.0);
+            }
+         }
+        while(Robot.oi.operatorJoystick.getRawButton(2)){
+            if(Robot.lift.cargoIsNotInterrupted()){
+                Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+            }else if(!Robot.lift.cargoIsNotInterrupted()){
+                Robot.lift.moveLift(0.0);
+            }
+         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -61,13 +85,11 @@ public class ManualLift extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.lift.moveLift(0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-        end();
     }
 }
