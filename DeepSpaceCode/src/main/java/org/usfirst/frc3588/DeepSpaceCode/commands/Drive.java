@@ -43,6 +43,14 @@ public class Drive extends Command {
     protected void initialize() {
         left = 0;
         right = 0;
+
+        //THIS STARTS OUT THE CODE WITH THE CLIMBING PISTONS RETRACTED
+        //
+        //
+        Robot.climbing.retractDoublePistons();
+        Robot.climbing.retractSinglePiston();
+        Robot.climbing.turnOffDoublePistonSolenoid();
+        Robot.climbing.turnOffSinglePistonSolenoid();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -50,7 +58,7 @@ public class Drive extends Command {
     protected void execute() {
         left = Robot.oi.getleftJoystick().getY();
         right = Robot.oi.getrightJoystick().getY();
-        configMotors = Robot.oi.operatorJoystick.getRawAxis(3) * 0.5;
+        configMotors = Robot.oi.operatorJoystick.getRawAxis(3) * 0.7;
         Robot.acquisition.setConfigMotorSpeed(configMotors);
 
         // Robot.climbing.setLeftBackMoveMotor(-left*0.8);
