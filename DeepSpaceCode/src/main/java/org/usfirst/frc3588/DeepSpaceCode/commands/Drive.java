@@ -58,7 +58,7 @@ public class Drive extends Command {
     protected void execute() {
         left = Robot.oi.getleftJoystick().getY();
         right = Robot.oi.getrightJoystick().getY();
-        configMotors = Robot.oi.operatorJoystick.getRawAxis(3) * 0.7;
+        configMotors = -Robot.oi.operatorJoystick.getRawAxis(3) * 0.7;
         Robot.acquisition.setConfigMotorSpeed(configMotors);
 
         // Robot.climbing.setLeftBackMoveMotor(-left*0.8);
@@ -70,7 +70,14 @@ public class Drive extends Command {
         Robot.chassis.setLeftMotor1Speed(-left);  
         Robot.chassis.setLeftMotor2Speed(-left);
 
-        
+        Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
+        if(Robot.oi.operatorJoystick.getRawButton(1)){
+            if(Robot.lift.hatchIsNotInterrupted()){ // false
+                Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+            }else if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
+                Robot.lift.moveLift(0.0);
+            }
+         }
             // Robot.climbing.setLeftBackMoveMotor(-left *0.2);
             // Robot.climbing.setMiddleMoveMotor(right * 0.2);
             // Robot.climbing.setRightMoveMotor(right *0.2);
