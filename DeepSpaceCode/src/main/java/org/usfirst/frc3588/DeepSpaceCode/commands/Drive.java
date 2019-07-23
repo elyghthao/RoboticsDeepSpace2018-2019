@@ -70,14 +70,20 @@ public class Drive extends Command {
         Robot.chassis.setLeftMotor1Speed(-left);  
         Robot.chassis.setLeftMotor2Speed(-left);
 
-        Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
+        // Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
+        if(!Robot.lift.hatchIsNotInterrupted()){
+            Robot.lift.moveLift(0.0);
+        }
         if(Robot.oi.operatorJoystick.getRawButton(1)){
-            if(Robot.lift.hatchIsNotInterrupted()){ // false
-                Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
-            }else if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
-                Robot.lift.moveLift(0.0);
+           Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1)); 
             }
-         }
+        // if(Robot.oi.operatorJoystick.getRawButton(1)){
+        //     if(Robot.lift.hatchIsNotInterrupted()){ // false
+        //         Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
+        //     }else if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
+        //         Robot.lift.moveLift(0.0);
+        //     }
+        //  }
             // Robot.climbing.setLeftBackMoveMotor(-left *0.2);
             // Robot.climbing.setMiddleMoveMotor(right * 0.2);
             // Robot.climbing.setRightMoveMotor(right *0.2);
