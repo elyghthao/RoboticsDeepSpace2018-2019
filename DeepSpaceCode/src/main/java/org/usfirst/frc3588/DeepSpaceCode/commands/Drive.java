@@ -45,8 +45,6 @@ public class Drive extends Command {
         right = 0;
 
         //THIS STARTS OUT THE CODE WITH THE CLIMBING PISTONS RETRACTED
-        //
-        //
         Robot.climbing.retractDoublePistons();
         Robot.climbing.retractSinglePiston();
         Robot.climbing.turnOffDoublePistonSolenoid();
@@ -59,69 +57,21 @@ public class Drive extends Command {
         left = Robot.oi.getleftJoystick().getY();
         right = Robot.oi.getrightJoystick().getY();
         configMotors = -Robot.oi.operatorJoystick.getRawAxis(3) * 0.7;
-        Robot.acquisition.setConfigMotorSpeed(configMotors);
-
-        // Robot.climbing.setLeftBackMoveMotor(-left*0.8);
-        // Robot.climbing.setRightMoveMotor(-right*0.8);
-        // Robot.climbing.setMiddleMoveMotor(-right);j                                 
+        Robot.acquisition.setConfigMotorSpeed(configMotors);                             
 
         Robot.chassis.setRightMotor1Speed(right);
         Robot.chassis.setRightMotor2Speed(right);
         Robot.chassis.setLeftMotor1Speed(-left);  
         Robot.chassis.setLeftMotor2Speed(-left);
-
-        // Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
-        if(!Robot.lift.hatchIsNotInterrupted()){
-            Robot.lift.moveLift(0.0);
-        }
+        Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1));
         if(Robot.oi.operatorJoystick.getRawButton(1)){
-           Robot.lift.moveLift(1* Robot.oi.operatorJoystick.getRawAxis(1)); 
+            if(Robot.lift.hatchIsNotInterrupted()){ // false
+                Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
             }
-        // if(Robot.oi.operatorJoystick.getRawButton(1)){
-        //     if(Robot.lift.hatchIsNotInterrupted()){ // false
-        //         Robot.lift.moveLift(1 * Robot.oi.operatorJoystick.getRawAxis(1));
-        //     }else if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
-        //         Robot.lift.moveLift(0.0);
-        //     }
-        //  }
-            // Robot.climbing.setLeftBackMoveMotor(-left *0.2);
-            // Robot.climbing.setMiddleMoveMotor(right * 0.2);
-            // Robot.climbing.setRightMoveMotor(right *0.2);
-
-        // if (Robot.oi.rightJoystick.getRawButton(12)) {
-        //     if (boschedrive == true) {
-        //         boschedrive = false;
-        //     } else {
-        //         boschedrive = true;
-        //     }
-        //     Timer.delay(0.05);
-        // }
-
-        // if (boschedrive) {
-        //     Robot.chassis.setRightMotor1Speed(right);
-        //     Robot.chassis.setRightMotor2Speed(right);
-        //     Robot.chassis.setLeftMotor1Speed(-left);
-        //     Robot.chassis.setLeftMotor2Speed(-left);
-        //     Robot.climbing.setLeftBackMoveMotor(-left);
-        //     Robot.climbing.setMiddleMoveMotor(right);
-        //     Robot.climbing.setRightMoveMotor(right);
-        // }
-
-        // if (right > 0.05 && right < -0.05) {
-        //     Robot.chassis.setRightMotor1Speed(right);
-        //     Robot.chassis.setRightMotor2Speed(right);
-        // } else {
-        //     Robot.chassis.setRightMotor1Speed(0.0);
-        //     Robot.chassis.setRightMotor2Speed(0.0);
-        // }
-
-        // if (left > 0.05 && left < -0.05) {
-        //     Robot.chassis.setLeftMotor1Speed(-left);
-        //     Robot.chassis.setLeftMotor2Speed(-left);
-        // } else {
-        //     Robot.chassis.setLeftMotor1Speed(0.0);
-        //     Robot.chassis.setLeftMotor2Speed(0.0);
-        // }
+            if(!Robot.lift.hatchIsNotInterrupted()){ // if linebreaker is passed (true)
+                Robot.lift.moveLift(0.0);
+            }
+         }
 
     }
 

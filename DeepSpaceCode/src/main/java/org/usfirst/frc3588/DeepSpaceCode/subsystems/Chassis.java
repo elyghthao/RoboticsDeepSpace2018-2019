@@ -82,18 +82,8 @@ public class Chassis extends Subsystem {
 
     }
 
-    // ** need to adjust for motors moving in opposite directions
-
     
 
-    //  public void drive(double leftSpeed, double rightSpeed){
-    //     leftMotor1.set(leftSpeed);
-    //     leftMotor2.set(-1 * leftSpeed);
-    //     rightMotor1.set(rightSpeed);
-    //     rightMotor2.set(-1 * rightSpeed);
-    // //     ttoLeft.set(leftSpeed);
-    // //     ttoRight.set(rightSpeed);
-    // }
 
     public void setLeftMotor1Speed(double speed) {
         leftMotor1.set(speed);

@@ -51,11 +51,11 @@ public class Lift extends Subsystem {
         addChild("HatchLineBreakerTransmitter",hatchLineBreakerTransmitter);
         
         
-        hatchLineBreakerReceiver = new DigitalInput(3);
+        hatchLineBreakerReceiver = new DigitalInput(4);
         addChild("HatchLineBreakerReceiver",hatchLineBreakerReceiver);
         
         
-        cargoLineBreakerTransmitter = new DigitalInput(4);
+        cargoLineBreakerTransmitter = new DigitalInput(9);
         addChild("CargoLineBreakerTransmitter",cargoLineBreakerTransmitter);
         
         
